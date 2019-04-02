@@ -1,2 +1,3 @@
-# Classificacao_emocao
-Classificação do estado emocional por sinais fisiológicos (EEG, ECG e GSR)  
+# Classificação de Emoções
+
+Códigos para classificação dos estados emocionais pelos sinais fisiológicos EEG, ECG e GSR.  
