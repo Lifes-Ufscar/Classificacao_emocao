@@ -19,7 +19,7 @@ from pandas import read_excel
 #  -----------------------------
 
 # Dados teste GSR
-df = read_excel('dadosGSR/amostras_GSR.xlsx', sheet_name='Planilha1')
+df = read_excel('dadosGSR//amostras_GSR.xlsx', sheet_name='Planilha1')
 x  = df.values
 
 # LDA e Classificador GSR
@@ -29,8 +29,8 @@ for i in range(0,4):
     teste = [x[i]]
     classeGSR = ClassificadorGSR(teste)
     GSR = classeGSR.classificador_gsr()
-    print("i", i)
-    print("Resulado GSR", GSR)
+    print("i:", i)
+    print("Resulado GSR:", GSR)
 
 
 #  -----------------------------
@@ -48,8 +48,8 @@ for i in range(0, 4):
     teste = [x[i]]
     classeECG = ClassificadorECG(teste)
     ECG = classeECG.classificador_ecg()
-    print("i", i)
-    print("Resulado ECG", ECG)
+    print("i:", i)
+    print("Resulado ECG:", ECG)
  
     
 #  -----------------------------
@@ -84,6 +84,7 @@ theta = theta.values
 # LDA e Classificador EEG
 from classificadorEEG import ClassificadorEEG
 # Teste com amostras
+print("\nTESTE EEG")
 for i in range(0, 4):
     sinaldelta     = [delta[i]]  
     sinalhighAlpha = [highAlpha[i]] 
@@ -100,5 +101,5 @@ for i in range(0, 4):
                                  sinallowGamma,  sinalmidGamma,
                                  sinaltheta)
     EEG = classeEEG.classificador_eeg()
-    print("i", i)
-    print("Resulado EEG", EEG)
+    print("i:", i)
+    print("Resulado EEG:", EEG)
