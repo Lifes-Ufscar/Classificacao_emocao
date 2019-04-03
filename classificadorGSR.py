@@ -1,19 +1,26 @@
 # -*- coding: utf-8 -*-
 
-class ClassificadorGSR(object):
+class ClassificadorGSR():
 
     def __init__(self, sinalGSR):
         self.sinalGSR = sinalGSR
      
 
     def classificador_gsr(self):
-
         import pickle
+    
         lda = pickle.load(open('dadosGSR//lda_gsr.sav', 'rb'))
-        ##Classificador
+        
+        # Classificador
         nb_gsr = pickle.load(open('dadosGSR//nb_gsr.sav', 'rb'))
-
         
         novo_registro = lda.transform(self.sinalGSR)
-        resultados = nb_gsr.predict(novo_registro)
+        resultados    = nb_gsr.predict(novo_registro)
         return resultados
+
+
+#     def checar_versao(self):
+#         import platform
+#         
+#         # Retorna uma string
+#         return platform.python_version()
