@@ -1,20 +1,19 @@
 # -*- coding: utf-8 -*-
 # #!/usr/bin/env python
-# Reflects the requests from HTTP methods GET, POST, PUT, and DELETE
-# Written by Nathan Hamiel (2010)
 
 from BaseHTTPServer import HTTPServer, BaseHTTPRequestHandler
-from optparse import OptionParser
-from NeuroPy import NeuroPy
+from optparse       import OptionParser
+from NeuroPy        import NeuroPy
 import serial
 import datetime
+
 
 '''- - - - - - - - - - - - - 
 | Inicializações             |
 | (Formato para Windows)     |
  - - - - - - - - - - - - - '''
 # Porta COM do MindWave USB Adapter
-mindwave = NeuroPy("COM9")
+mindwave = NeuroPy("COM13")
 mindwave.start()
 print("\nNeuroPY inicializado\n")
 
@@ -26,16 +25,16 @@ print("Portal serial aberta\n")
 def capturaSensores(user, session_id):
     print ("\nCaptura iniciada\n")
 
-    cont = 0
     ecg = " "
     gsr = " "
+    contador = 0
+    
+    print("Início da captura:", datetime.datetime.now().strftime("%H:%M:%S.%f"))
 
-    print "Início da captura:", datetime.datetime.now().strftime("%H:%M:%S.%f")
-
-    while True:
-        cont = cont + 1
-        #tempo = datetime.datetime.now().strftime("%H:%M:%S.%f")
-        tempo = datetime.datetime.now().strftime("%H:%M:%S")
+    while(True):
+        #tempo    = datetime.datetime.now().strftime("%H:%M:%S")
+        tempo    = datetime.datetime.now().strftime("%H:%M:%S.%f")
+        contador = contador + 1
         leituras = conexao.readline()  # Leitura de dois sensores: GSR e ECG
 
         # Separar os dados dos dois sensores
@@ -45,7 +44,7 @@ def capturaSensores(user, session_id):
             ecg = leituras
 
         print(tempo,
-              cont,
+              contador,
               user,
               session_id,
               mindwave.attention,
@@ -103,7 +102,8 @@ def capturaSensores(user, session_id):
         cnx.close()
         '''
 
-
+# Reflects the requests from HTTP methods GET, POST, PUT, and DELETE
+# Written by Nathan Hamiel (2010)
 class RequestHandler(BaseHTTPRequestHandler):
 
     def do_GET(self):
