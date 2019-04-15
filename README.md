@@ -1,6 +1,6 @@
-# Classificação de Emoções
+# Captura e classificação de emoções
 
-Códigos para classificação dos estados emocionais pelos sinais fisiológicos EEG, ECG e GSR.  
+Códigos para classificação dos estados emocionais pelos sinais fisiológicos EEG, ECG e GSR.
 
 Cada uma desses sinais nos informam algo:
 * **EEG (eletroencefalograma)** mede a atividade cerebral informando a produção de ondas beta, alfa e teta
@@ -8,7 +8,6 @@ Cada uma desses sinais nos informam algo:
 * **GSR (resposta galvânica da pele)** mede a atividade elétrica das glândulas que produzem suor nas palmas das mãos e pontas dos dedos, mais sensíveis às emoções e pensamentos
 
 ## Pendências
-- [ ] Adicionar descrição no código "principal.py"
-- [ ] Modularizar mais o código por sinal (se possível)
+- [x] Adicionar descrição no código "principal.py"
 - [ ] Atualizar a descrição do projeto
 - [ ] Documentar projeto
