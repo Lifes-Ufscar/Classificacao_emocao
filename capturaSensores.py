@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # #!/usr/bin/env python
-
+'''
 from NeuroPy import NeuroPy
 import serial
 import datetime
@@ -63,7 +63,39 @@ def capturaSensores(user, session_id):
               mindwave.blinkStrength,
               gsr,
               ecg)
-        
+        '''
+import socket
+import time
+
+HOST = '127.0.0.2'  # Endereco IP do Servidor
+PORT = 5000  # Porta que o Servidor esta
+tcp = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+dest = (HOST, PORT)
+tcp.connect(dest)
+print'Mensagem:'
+msg = raw_input()
+
+#while True:
+GSR = 200
+dados_GSR = []
+for i in range(300):
+    #msg = 1
+
+    #print'Inicio da coleta'
+    #GSR = GSR + 1
+    dados_GSR.append(GSR)
+    if(len(dados_GSR)== 1000):
+        print dados_GSR
+        tcp.send(str(dados_GSR))
+        #print 'Retorno', retorno
+        dados_GSR = []
+        print'Mensagem:', msg
+        print i
+        #msg = raw_input()
+
+        #time.sleep(.01)
+
+tcp.close()
 #        # Escrita (e criação) em um arquivo excel
 #        wbook = xlsxwriter.Workbook("amostras_GSR.xlsx")
 #        sheet = wbook.add_worksheet()
