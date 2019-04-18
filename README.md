@@ -1,6 +1,6 @@
 # Captura e classificação de emoções
 
-Códigos para classificação dos estados emocionais pelos sinais fisiológicos EEG, ECG e GSR.
+Códigos para captura e posterior classificação dos estados emocionais através dos sinais fisiológicos EEG, ECG e GSR.
 
 A descrição de cada um desses sinais está logo abaixo:
 * **EEG (eletroencefalograma)** mede a atividade cerebral informando a produção de ondas beta, alfa e teta
@@ -9,11 +9,15 @@ A descrição de cada um desses sinais está logo abaixo:
 
 ## Ambientes usados
 * [PyCharm Community](https://www.jetbrains.com/pycharm/)
-* [Spyder](https://www.spyder-ide.org/)
+* [Spyder](https://www.spyder-ide.org/) (Baixado através do ambiente Anaconda)
 * [Anaconda](https://www.anaconda.com/)
+* [Postman](https://www.getpostman.com/)
 
 ## Pendências
 - [x] Adicionar descrição no código "principal.py"
 - [ ] Documentar projeto
 - [ ] Tentar setar callbacks 
 - [ ] Tentar modularizar mais os códigos
+- [ ] Testar escrita em planilha com captura em tempo real
+
+[comment]: # Leitura coração 20 frequencias por segundo;
