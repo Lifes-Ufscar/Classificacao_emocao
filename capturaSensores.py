@@ -30,12 +30,17 @@ def capturaSensores(user, session_id):
     gsr = " "
     contador = 0
     
+    # Propósito de testes
+    user = "u1"
+    session_id = "sid1"
+    
     # Escrita (e criação) em um arquivo excel
     # TODA VEZ QUE EXECUTA, O ARQUIVO ANTERIOR COM MESMO
     # NOME SERÁ SOBRESCRITO, OU SEJA, SERÁ(ÃO) PERDIDO(S)
     # O(S) DADO(S) QUE TINHAM ANTERIORMENTE!
-    workbook = xlsxwriter.Workbook("amostras_teste.xlsx")
-    worksheet = workbook.add_worksheet()
+    titulo   = "amostras_" + user + "_" + session_id + ".xlsx"
+    workbook = xlsxwriter.Workbook(titulo)
+    planilha = workbook.add_worksheet()
     
     # Destacar texto de células das categorias
     bold = workbook.add_format({'bold': True})
@@ -45,40 +50,60 @@ def capturaSensores(user, session_id):
     row = 1
     valor = 0
     
-    # Categorias de células
-    worksheet.write('A1', 'Tempo',          bold)
-    worksheet.write('B1', 'Contador',       bold)
-    worksheet.write('C1', 'Usuário',        bold)
-    worksheet.write('D1', 'ID Sessão',      bold)
-    worksheet.write('E1', 'Atenção',        bold)
-    worksheet.write('F1', 'Meditação',      bold)
-    worksheet.write('G1', 'Raw Value',      bold)
-    worksheet.write('H1', 'Delta',          bold)
-    worksheet.write('I1', 'Theta',          bold)
-    worksheet.write('J1', 'Low Alpha',      bold)
-    worksheet.write('K1', 'High Alpha',     bold)
-    worksheet.write('L1', 'Low Beta',       bold)
-    worksheet.write('M1', 'High Beta',      bold)
-    worksheet.write('N1', 'Low Gamma',      bold)
-    worksheet.write('O1', 'Mid Gamma',      bold)
-    worksheet.write('P1', 'Poor Signal',    bold)
-    worksheet.write('Q1', 'Blink Strength', bold)
-    worksheet.write('R1', 'GSR',            bold)
-    worksheet.write('S1', 'ECG',            bold)
+#    # Categorias de células
+#    planilha.write('A1', 'Tempo',          bold)
+#    planilha.write('B1', 'Contador',       bold)
+#    planilha.write('C1', 'Usuário',        bold)
+#    planilha.write('D1', 'ID Sessão',      bold)
+#    planilha.write('E1', 'Atenção',        bold)
+#    planilha.write('F1', 'Meditação',      bold)
+#    planilha.write('G1', 'Raw Value',      bold)
+#    planilha.write('H1', 'Delta',          bold)
+#    planilha.write('I1', 'Theta',          bold)
+#    planilha.write('J1', 'Low Alpha',      bold)
+#    planilha.write('K1', 'High Alpha',     bold)
+#    planilha.write('L1', 'Low Beta',       bold)
+#    planilha.write('M1', 'High Beta',      bold)
+#    planilha.write('N1', 'Low Gamma',      bold)
+#    planilha.write('O1', 'Mid Gamma',      bold)
+#    planilha.write('P1', 'Poor Signal',    bold)
+#    planilha.write('Q1', 'Blink Strength', bold)
+#    planilha.write('R1', 'GSR',            bold)
+#    planilha.write('S1', 'ECG',            bold)
+    
+    # Propósito de testes
+    # Categorias de células (sem 'Usuário' e 'ID Sessão')
+    planilha.write('A1', 'Tempo',          bold)
+    planilha.write('B1', 'Contador',       bold)
+    planilha.write('C1', 'Atenção',        bold)
+    planilha.write('D1', 'Meditação',      bold)
+    planilha.write('E1', 'Raw Value',      bold)
+    planilha.write('F1', 'Delta',          bold)
+    planilha.write('G1', 'Theta',          bold)
+    planilha.write('H1', 'Low Alpha',      bold)
+    planilha.write('I1', 'High Alpha',     bold)
+    planilha.write('J1', 'Low Beta',       bold)
+    planilha.write('K1', 'High Beta',      bold)
+    planilha.write('L1', 'Low Gamma',      bold)
+    planilha.write('M1', 'Mid Gamma',      bold)
+    planilha.write('N1', 'Poor Signal',    bold)
+    planilha.write('O1', 'Blink Strength', bold)
+    planilha.write('P1', 'GSR',            bold)
+    planilha.write('Q1', 'ECG',            bold)
     
     print("INÍCIO CAPTURA:", datetime.datetime.now().strftime("%H:%M:%S.%f"))
 
     while(True):
         #tempo    = datetime.datetime.now().strftime("%H:%M:%S")
         tempo    = datetime.datetime.now().strftime("%H:%M:%S.%f")
+        leitura  = conexao.readline()  # Leitura de dois sensores: GSR e ECG
         contador += 1
-        leituras = conexao.readline()  # Leitura de dois sensores: GSR e ECG
-
-        # Separar os dados dos dois sensores
-        if "GSR" in leituras:
-            gsr = leituras
+        
+        # Separar os dados dos dois sensores (GSR e ECG)
+        if "GSR" in leitura:
+            gsr = leitura
         else:
-            ecg = leituras
+            ecg = leitura
 
         print(tempo,
               contador,
@@ -100,29 +125,70 @@ def capturaSensores(user, session_id):
               gsr,
               ecg)
         
-    # Teste para escrita em um arquivo excel
-    # Para 100 mil "amostras" leva cerca de 9 segundos
+#        # Propósito de testes
+#        # Print sem 'user' e 'session ID', pois são salvos
+#        # no nome do arquivo da planilha.
+#        print(tempo,
+#              contador,
+#              mindwave.attention,
+#              mindwave.meditation,
+#              mindwave.rawValue,
+#              mindwave.delta,
+#              mindwave.theta,
+#              mindwave.lowAlpha,
+#              mindwave.highAlpha,
+#              mindwave.lowBeta,
+#              mindwave.highBeta,
+#              mindwave.lowGamma,
+#              mindwave.midGamma,
+#              mindwave.poorSignal,
+#              mindwave.blinkStrength,
+#              gsr,
+#              ecg)
+#        
+#        # Escrita dos sinais fisiológicos na planilha
+#        planilha.write(row, col,      tempo)
+#        planilha.write(row, col + 1,  contador)
+#        planilha.write(row, col + 2,  user)
+#        planilha.write(row, col + 3,  session_id)
+#        planilha.write(row, col + 4,  mindwave.attention)
+#        planilha.write(row, col + 5,  mindwave.meditation)
+#        planilha.write(row, col + 6,  mindwave.rawValue)
+#        planilha.write(row, col + 7,  mindwave.delta)
+#        planilha.write(row, col + 8,  mindwave.theta)
+#        planilha.write(row, col + 9,  mindwave.lowAlpha)
+#        planilha.write(row, col + 10, mindwave.highAlpha)
+#        planilha.write(row, col + 11, mindwave.lowBeta)
+#        planilha.write(row, col + 12, mindwave.highBeta)
+#        planilha.write(row, col + 13, mindwave.lowGamma)
+#        planilha.write(row, col + 14, mindwave.midGamma)
+#        planilha.write(row, col + 15, mindwave.poorSignal)
+#        planilha.write(row, col + 16, mindwave.blinkStrength)
+#        planilha.write(row, col + 17, gsr)
+#        planilha.write(row, col + 18, ecg)
+#        row += 1
+    
+    # Propósito de testes
+    # Teste para escrita na planilha (sem 'Usuário' e 'ID Sessão')
     print("INÍCIO ESCRITA EXCEL:", datetime.datetime.now().strftime("%H:%M:%S.%f"))
     for i in range(0, 99999):
-        worksheet.write(row, col,      valor)
-        worksheet.write(row, col + 1,  valor)
-        worksheet.write(row, col + 2,  valor)
-        worksheet.write(row, col + 3,  valor)
-        worksheet.write(row, col + 4,  valor)
-        worksheet.write(row, col + 5,  valor)
-        worksheet.write(row, col + 6,  valor)
-        worksheet.write(row, col + 7,  valor)
-        worksheet.write(row, col + 8,  valor)
-        worksheet.write(row, col + 9,  valor)
-        worksheet.write(row, col + 10, valor)
-        worksheet.write(row, col + 11, valor)
-        worksheet.write(row, col + 12, valor)
-        worksheet.write(row, col + 13, valor)
-        worksheet.write(row, col + 14, valor)
-        worksheet.write(row, col + 15, valor)
-        worksheet.write(row, col + 16, valor)
-        worksheet.write(row, col + 17, valor)
-        worksheet.write(row, col + 18, valor)
+        planilha.write(row, col,      valor)
+        planilha.write(row, col + 1,  valor)
+        planilha.write(row, col + 2,  valor)
+        planilha.write(row, col + 3,  valor)
+        planilha.write(row, col + 4,  valor)
+        planilha.write(row, col + 5,  valor)
+        planilha.write(row, col + 6,  valor)
+        planilha.write(row, col + 7,  valor)
+        planilha.write(row, col + 8,  valor)
+        planilha.write(row, col + 9,  valor)
+        planilha.write(row, col + 10, valor)
+        planilha.write(row, col + 11, valor)
+        planilha.write(row, col + 12, valor)
+        planilha.write(row, col + 13, valor)
+        planilha.write(row, col + 14, valor)
+        planilha.write(row, col + 15, valor)
+        planilha.write(row, col + 16, valor)
         row += 1
         valor += 1.1
     print("FIM ESCRITA EXCEL:", datetime.datetime.now().strftime("%H:%M:%S.%f"))
