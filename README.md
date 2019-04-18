@@ -20,4 +20,6 @@ A descrição de cada um desses sinais está logo abaixo:
 - [ ] Tentar modularizar mais os códigos
 - [ ] Testar escrita em planilha com captura em tempo real
 
-[comment]: # Leitura coração 20 frequencias por segundo;
+<!--- 
+* Leitura coração 20 frequencias por segundo;
+--->
