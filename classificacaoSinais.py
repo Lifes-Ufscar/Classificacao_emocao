@@ -4,9 +4,15 @@
     Autor: Isaque Elcio
 
     Descrição: 
-        Classificação dos dados presentes em planilhas excel de amostras para
-        cada sinal fisiológico (GSR, EEG, ECG).
+        Classificação dos dados presentes em planilhas excel de amostras para os sinais fisiológico GSR, EEG, ECG.
         
+        Cada um dos sinais significa:
+            - EEG (eletroencefalograma): mede a atividade cerebral informando a produção de ondas beta, alfa e teta;
+        
+            - ECG (eletrocardiograma): mede a atividade elétrica do coração;
+        
+            - GSR (resposta galvânica da pele): mede a atividade elétrica das glândulas que produzem suor nas palmas
+                                                das mãos e pontas dos dedos, mais sensíveis às emoções e pensamentos.
 '''
 
 # Bibliotecas
@@ -19,11 +25,11 @@ from classificadorEEG import ClassificadorEEG  # LDA e Classificador EEG
 #  ----------------------------------
 # |               GSR               |
 #  ---------------------------------
-# Dados para teste
+# Leitura das amostras
 df = read_excel("dadosGSR//amostras_GSR.xlsx", sheet_name = "Planilha1")
 x  = df.values
 
-# Teste com amostras
+# Teste
 print("\nTESTE GSR INICIADO\n")
 for i in range(0, 4):
     teste = [x[i]]
@@ -37,11 +43,11 @@ print("\nTESTE GSR FINALIZADO\n")
 #  ----------------------------------
 # |               ECG               |
 #  ---------------------------------
-# Dados para teste
+# Leitura das amostras
 df = read_excel("dadosECG//amostras_ECG.xlsx", sheet_name = "Planilha1")
 x  = df.values
 
-# Teste com amostras
+# Teste
 print("\nTESTE ECG INICIADO\n")
 for i in range(0, 4):
     teste = [x[i]]
@@ -55,7 +61,7 @@ print("\nTESTE ECG FINALIZADO\n")
 #  ----------------------------------
 # |               EEG               |
 #  ---------------------------------
-# Dados para teste
+# Leitura das amostras
 delta = read_excel("dadosEEG//amostras_delta.xlsx", sheet_name = "Sheet1")
 delta = delta.values
 
@@ -80,7 +86,7 @@ midGamma = midGamma.values
 theta = read_excel("dadosEEG//amostras_theta.xlsx", sheet_name = "Sheet1")
 theta = theta.values
 
-# Teste com amostras
+# Teste
 print("\nTESTE EEG INICIADO\n")
 for i in range(0, 4):
     sinaldelta     = [delta[i]]  
