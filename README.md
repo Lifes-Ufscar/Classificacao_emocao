@@ -17,7 +17,7 @@ A descrição de cada um desses sinais está logo abaixo:
 - [x] Adicionar descrição no código "principal.py"
 - [ ] Documentar projeto
 - [ ] Tentar modularizar mais os códigos
-- [ ] Testar escrita em planilha com captura em tempo real
+- [x] Testar escrita em planilha com captura em tempo real
 
 <!--- 
 * Leitura coração 20 frequencias por segundo;

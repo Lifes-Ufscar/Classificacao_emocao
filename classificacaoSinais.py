@@ -26,7 +26,7 @@ from classificadorEEG import ClassificadorEEG  # LDA e Classificador EEG
 # |               GSR               |
 #  ---------------------------------
 # Leitura das amostras
-df = read_excel("dadosGSR//amostras_GSR.xlsx", sheet_name = "Planilha1")
+df = read_excel("amostras_u1_sid1.xlsx", sheet_name = "Planilha1")
 x  = df.values
 
 # Teste
