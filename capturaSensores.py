@@ -134,19 +134,19 @@ class RequestHandler(BaseHTTPRequestHandler):
         session_id = session_id.replace("']", "")
 
         # Planilha
-        workbook = xlsxwriter.Workbook("amostras/amostra_"+ user + "_" +session_id + ".xlsx")
+        workbook = xlsxwriter.Workbook("amostras/amostra_" + user + "_" + session_id + ".xlsx")
         planilha = workbook.add_worksheet()
 
-        # Destacar texto de células das categorias
+        # Destacar texto de celulas das categorias
         bold = workbook.add_format({'bold': True})
 
-        # Categorias de células
+        # Categorias de celulas
         planilha.write('A1', 'Tempo', bold)
         planilha.write('B1', 'Contador', bold)
-        planilha.write('C1', 'Usuário', bold)
-        planilha.write('D1', 'ID Sessão', bold)
-        planilha.write('E1', 'Atenção', bold)
-        planilha.write('F1', 'Meditação', bold)
+        planilha.write('C1', 'Usuario', bold)
+        planilha.write('D1', 'ID Sessao', bold)
+        planilha.write('E1', 'Atencao', bold)
+        planilha.write('F1', 'Meditacao', bold)
         planilha.write('G1', 'Raw Value', bold)
         planilha.write('H1', 'Delta', bold)
         planilha.write('I1', 'Theta', bold)
