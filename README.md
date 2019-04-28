@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="logo.png"/>
+  <img href="https://lifes.dc.ufscar.br/" src="logo.png" alt="Laboratório de Interação Flexível e Sustentável"/>
 </p>
 
 # Captura e classificação de emoções
