@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="logo.png"/>
+</p>
+
 # Captura e classificação de emoções
 
 Códigos para captura e posterior classificação dos estados emocionais através dos sinais fisiológicos EEG, ECG e GSR.
