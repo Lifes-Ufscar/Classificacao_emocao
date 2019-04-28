@@ -8,14 +8,17 @@ A descrição de cada um desses sinais está logo abaixo:
 * **GSR (resposta galvânica da pele)** mede a atividade elétrica das glândulas que produzem suor nas palmas das mãos e pontas dos dedos, mais sensíveis às emoções e pensamentos
 
 ## Ambientes usados
+### Leitura
 * [PyCharm Community](https://www.jetbrains.com/pycharm/)
+
+### Classificação
 * [Spyder](https://www.spyder-ide.org/) (Baixado através do ambiente Anaconda)
 * [Anaconda](https://www.anaconda.com/)
-* [Postman](https://www.getpostman.com/)
 
 ## Pendências
-- [x] Adicionar descrição no código "principal.py"
+- [x] Adicionar descrição no código `principal.py` (atual `main.py`)
 - [ ] Documentar projeto
+- [ ] Documentar códigos
 - [x] Tentar modularizar mais os códigos
 - [x] Testar escrita em planilha com captura em tempo real
 

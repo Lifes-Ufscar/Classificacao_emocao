@@ -1,23 +1,36 @@
 
-from BaseHTTPServer import HTTPServer
-from optparse       import OptionParser
-from RequestHandler import RequestHandler
-
+from Planilha import Planilha
+from Sensores import Sensores
 
 def main():
-    port = 8080
-    print("\nListening on localhost:%s" % port)
+    key = raw_input("\nDeseja iniciar a captura? [S/n]: ")
 
-    server = HTTPServer(('', port), RequestHandler)
-    server.serve_forever()
+    if(key == "sim" or key == "Sim" or key == "S" or key == "s"):
+        # Recebe e verifica o nome do usuario
+        usuario = raw_input("\nNome do usuario: ")
+        while(not usuario):
+            print("Sem nome de usuario!")
+            usuario = raw_input("\nNome do usuario: ")
 
-    exit(0)
+        # Recebe e verifica o ID da sessao
+        id_sessao = raw_input("ID da sessao: ")
+        while(not id_sessao.isdigit()):
+            print("\nSessao deve ser numero!")
+            id_sessao = raw_input("ID da sessao: ")
+
+        # Inicializacao da panilha de amostras
+        amostra = Planilha(usuario, id_sessao)
+        amostra.criar_xlsx()
+
+        # Inicializacao dos sensores
+        # Valores de porta default sao (Arduino: COM15) e (MindWave: COM13)
+        # Pode passar pelo construtor de sensores outros valores de portas COM
+        sensores  = Sensores()
+        iteracoes = sensores.leitura_sinais(usuario, id_sessao, amostra)
+
+        amostra.fechar_xlsx()
+
+        print("Captura realizada em %s iteracoes" % iteracoes)
 
 if __name__ == "__main__":
-    parser = OptionParser()
-    parser.usage = ("Creates an http-server that will echo out any GET or POST parameters\n"
-                    "Run:\n\n"
-                    "   reflect")
-    (options, args) = parser.parse_args()
-
     main()

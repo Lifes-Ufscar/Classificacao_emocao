@@ -1,62 +1,53 @@
 
 import xlsxwriter
-import time
 
-class Amostra():
-    usuario = None
-    sessao_id = None
-    workbook = None
-    planilha = None
-    coluna = 0
+class Planilha():
 
     def __init__(self, usuario, sessao_id):
-        self.usuario = usuario
+        self.usuario   = usuario
         self.sessao_id = sessao_id
 
-        self.workbook = xlsxwriter.Workbook("amostras/amostra_" + self.usuario + "_" + self.sessao_id + ".xlsx")
+    def criar_xlsx(self):
+        self.workbook = xlsxwriter.Workbook("amostras/amostra_" + self.usuario + "_sd" + self.sessao_id + ".xlsx")
         self.planilha = self.workbook.add_worksheet()
-        bold = self.workbook.add_format({'bold': True})
+        formato = self.workbook.add_format({"bold": True})
 
-        self.planilha.write('A1', 'Tempo', bold)
-        self.planilha.write('B1', 'Contador', bold)
-        self.planilha.write('C1', 'Atencao', bold)
-        self.planilha.write('D1', 'Meditacao', bold)
-        self.planilha.write('E1', 'Raw Value', bold)
-        self.planilha.write('F1', 'Delta', bold)
-        self.planilha.write('G1', 'Theta', bold)
-        self.planilha.write('H1', 'Low Alpha', bold)
-        self.planilha.write('I1', 'High Alpha', bold)
-        self.planilha.write('J1', 'Low Beta', bold)
-        self.planilha.write('K1', 'High Beta', bold)
-        self.planilha.write('L1', 'Low Gamma', bold)
-        self.planilha.write('M1', 'Mid Gamma', bold)
-        self.planilha.write('N1', 'Poor Signal', bold)
-        self.planilha.write('O1', 'Blink Strength', bold)
-        self.planilha.write('P1', 'GSR', bold)
-        self.planilha.write('Q1', 'ECG', bold)
+        self.planilha.write('A1', 'Contador',        formato)
+        self.planilha.write('A2', 'Tempo',           formato)
+        self.planilha.write('A3', 'Atencao',         formato)
+        self.planilha.write('A4', 'Meditacao',       formato)
+        self.planilha.write('A5', 'Raw Value',       formato)
+        self.planilha.write('A6', 'Delta',           formato)
+        self.planilha.write('A7', 'Theta',           formato)
+        self.planilha.write('A8', 'Low Alpha',       formato)
+        self.planilha.write('A9', 'High Alpha',      formato)
+        self.planilha.write('A10', 'Low Beta',       formato)
+        self.planilha.write('A11', 'High Beta',      formato)
+        self.planilha.write('A12', 'Low Gamma',      formato)
+        self.planilha.write('A13', 'Mid Gamma',      formato)
+        self.planilha.write('A14', 'Poor Signal',    formato)
+        self.planilha.write('A15', 'Blink Strength', formato)
+        self.planilha.write('A16', 'GSR',            formato)
+        self.planilha.write('A17', 'ECG',            formato)
 
-        print(u'\u2713'.encode('utf8') + " Planilha criada com sucesso\n")
-        time.sleep(1)
+    def escrever_xlsx(self, coluna, contador, tempo, mindwave, gsr, ecg):
+        self.planilha.write(0,  coluna, contador)
+        self.planilha.write(1,  coluna, tempo)
+        self.planilha.write(2,  coluna, mindwave.attention)
+        self.planilha.write(3,  coluna, mindwave.meditation)
+        self.planilha.write(4,  coluna, mindwave.rawValue)
+        self.planilha.write(5,  coluna, mindwave.delta)
+        self.planilha.write(6,  coluna, mindwave.theta)
+        self.planilha.write(7,  coluna, mindwave.lowAlpha)
+        self.planilha.write(8,  coluna, mindwave.highAlpha)
+        self.planilha.write(9,  coluna, mindwave.lowBeta)
+        self.planilha.write(10, coluna, mindwave.highBeta)
+        self.planilha.write(11, coluna, mindwave.lowGamma)
+        self.planilha.write(12, coluna, mindwave.midGamma)
+        self.planilha.write(13, coluna, mindwave.poorSignal)
+        self.planilha.write(14, coluna, mindwave.blinkStrength)
+        self.planilha.write(15, coluna, gsr)
+        self.planilha.write(16, coluna, ecg)
 
-    def escrita_xlsx(self, linha, tempo, contador, mindwave, gsr, ecg):
-        # Escrita dos sinais fisiologicos na planilha
-        self.planilha.write(linha, self.coluna,      tempo)
-        self.planilha.write(linha, self.coluna + 1,  contador)
-        self.planilha.write(linha, self.coluna + 2,  mindwave.attention)
-        self.planilha.write(linha, self.coluna + 3,  mindwave.meditation)
-        self.planilha.write(linha, self.coluna + 4,  mindwave.rawValue)
-        self.planilha.write(linha, self.coluna + 5,  mindwave.delta)
-        self.planilha.write(linha, self.coluna + 6,  mindwave.theta)
-        self.planilha.write(linha, self.coluna + 7,  mindwave.lowAlpha)
-        self.planilha.write(linha, self.coluna + 8,  mindwave.highAlpha)
-        self.planilha.write(linha, self.coluna + 9,  mindwave.lowBeta)
-        self.planilha.write(linha, self.coluna + 10, mindwave.highBeta)
-        self.planilha.write(linha, self.coluna + 11, mindwave.lowGamma)
-        self.planilha.write(linha, self.coluna + 12, mindwave.midGamma)
-        self.planilha.write(linha, self.coluna + 13, mindwave.poorSignal)
-        self.planilha.write(linha, self.coluna + 14, mindwave.blinkStrength)
-        self.planilha.write(linha, self.coluna + 15, gsr)
-        self.planilha.write(linha, self.coluna + 16, ecg)
-
-    def fecha_xlsx(self):
+    def fechar_xlsx(self):
         self.workbook.close()
