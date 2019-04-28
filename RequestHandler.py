@@ -14,7 +14,6 @@ class RequestHandler(BaseHTTPRequestHandler):
     def do_POST(self):
         duracao = 300  # Milissegundos
         frequencia = 440 # Hz
-        winsound.Beep(frequencia, duracao)
 
         request_path = self.path
 
@@ -25,6 +24,7 @@ class RequestHandler(BaseHTTPRequestHandler):
 
         usuario   = request_headers.getheaders('usuario')
         sessao_id = request_headers.getheaders('sessao_id')
+        filme = request_headers.getheaders('filme')
 
         usuario = str(usuario)
         usuario = usuario.replace("['", "")
@@ -34,14 +34,18 @@ class RequestHandler(BaseHTTPRequestHandler):
         sessao_id = sessao_id.replace("['", "")
         sessao_id = sessao_id.replace("']", "")
 
+        #filme = str(filme)
+        #filme = filme.replace("['", "")
+        #filme = filme.replace("']", "")
+
         # Chama a funcao de captura de sinais
         # Parametros: Porta COM do MindWave, Porta COM do Arduino, Velocidade bits/s do Arduino
-        captura = CapturaSinais("COM13", "COM15", 9600)
+        captura = CapturaSinais()
+        #iteracoes = captura.captura_sensores(usuario, sessao_id, filme)
         iteracoes = captura.captura_sensores(usuario, sessao_id)
 
         # length = int(content_length[0]) if content_length else 0
 
-        winsound.Beep(frequencia, duracao)
         print("\nCaptura finalizada com %d iteracoes" % iteracoes)
         print("\n<----- Request End -----\n")
 
