@@ -28,34 +28,32 @@ import pickle
 # |               GSR               |
 #  ---------------------------------
 # Leitura das amostras
-df = read_excel('amostras//amostra_Diogo_sid21.xlsx', sheet_name = 'Sheet1')
+df = read_excel('amostras//amostra_Bareta_sid1.xlsx', sheet_name = 'Sheet1')
 
-df3 = df.iloc[13:14, 1:1001]
-x  = df3.values
+dfgsr = df.iloc[13:14, 1:]
 
-lda = pickle.load(open('dadosGSR//lda_gsr.sav', 'rb'))
-  # Classificador
- nb_gsr = pickle.load(open('dadosGSR//nb_gsr.sav', 'rb'))
-'''
-classeGSR = ClassificadorGSR(x)
-GSR = classeGSR.classificador_gsr()
-'''
-x = np.asarray(x)
-x = x.reshape(-1, 1)
-x = scaler.fit_transform(x)
-novo_registro = novo_registro.reshape(-1, 3)
+tamanhoamostra = dfgsr.size
+a = 3000
+i = 0
+while a <= tamanhoamostra :
+       
+    
+    amostrasgsr = dfgsr.iloc[: , i:a].values  
+    #print("i --", i)
+    #print("a --", a)
+    #print("Intervalo", amostrasgsr.size)
+        
+    classeGSR = ClassificadorGSR(amostrasgsr)
+    GSR = classeGSR.classificador_gsr()
+    
+    print("Resultado GSR###:", GSR)
+    
+    i= i+50
+    a = a+50
 
-
-
-
-
-novo_registro = lda.transform(x)
-resultados    = nb_gsr.predict(novo_registro)
-
-print("Resultado GSR:", resultados)
-
-
+    
 # Teste
+    '''
 print("\nTESTE GSR INICIADO\n")
 for i in range(0, 4):
     teste = [x[i]]
@@ -64,7 +62,7 @@ for i in range(0, 4):
     print("i:", i)
     print("Resultado GSR:", GSR)
 print("\nTESTE GSR FINALIZADO\n")
-
+'''
 
 #  ----------------------------------
 # |               ECG               |
