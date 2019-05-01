@@ -28,8 +28,8 @@ import pickle
 # |               GSR               |
 #  ---------------------------------
 # Leitura das amostras
-df = read_excel('amostras//amostra_Bareta_sid1.xlsx', sheet_name = 'Sheet1')
-
+df = read_excel('amostras//amostra_Bareta_sid2_f13.xlsx', sheet_name = 'Sheet1')
+df = df.values
 dfgsr = df.iloc[13:14, 1:]
 
 tamanhoamostra = dfgsr.size
@@ -41,9 +41,11 @@ while a <= tamanhoamostra :
     #print("i --", i)
     #print("a --", a)
     #print("Intervalo", amostrasgsr.size)
+    
+    
     classeGSR = ClassificadorGSR(amostrasgsr)
     GSR = classeGSR.classificador_gsr()
-    
+        
     print("Resultado GSR###:", GSR)
     
     i= i+50
@@ -76,19 +78,13 @@ while a <= tamanhoamostra :
     #print("i --", i)
     #print("a --", a)
     #print("Intervalo", amostrasgsr.size)
-    classeGSR = ClassificadorECG(amostrasecg)
-    ECG = classeGSR.classificador_ecg()
+    classeECG = ClassificadorECG(amostrasecg)
+    ECG = classeECG.classificador_ecg()
     
     print("Resultado ECG###:", ECG)
     
     i= i+50
     a = a+50
-
-
-
-
-
-
 
 '''
 # Leitura das amostras
@@ -109,7 +105,95 @@ print("\nTESTE ECG FINALIZADO\n")
 #  ----------------------------------
 # |               EEG               |
 #  ---------------------------------
+dfeeg = df.iloc[0:13, 1:]
+
+sinaldelta = dfeeg.iloc[3:4, 1:].values
+
+'''
+sinaltheta = dfeeg.iloc[4:5, 1:]
+sinallowAlpha = dfeeg.iloc[5:6, 1:]
+sinalhighAlpha = dfeeg.iloc[6:7, 1:]
+sinallowBeta = dfeeg.iloc[7:8, 1:]
+sinalhighBeta = dfeeg.iloc[8:9, 1:]
+sinallowGamma = dfeeg.iloc[9:10, 1:]
+sinalmidGamma = dfeeg.iloc[10:11, 1:]
+'''
+tamanhoamostra = sinaldelta.size
+tamanhoamostra = 3000
+aa = 3000
+i = 0
+while aa <= tamanhoamostra :
+           
+    #amostraseeg = dfeeg.iloc[: , i:a].values 
+    
+    sinaldelta = dfeeg.iloc[3:4, i:aa].values
+    sinaltheta = dfeeg.iloc[4:5, i:aa].values
+    sinallowAlpha = dfeeg.iloc[5:6, i:aa].values
+    sinalhighAlpha = dfeeg.iloc[6:7, i:aa].values
+    sinallowBeta = dfeeg.iloc[7:8, i:aa].values
+    sinalhighBeta = dfeeg.iloc[8:9, i:aa].values
+    sinallowGamma = dfeeg.iloc[9:10, i:aa].values
+    sinalmidGamma = dfeeg.iloc[10:11, i:aa].values
+    #print("i --", i)
+    #print("a --", a)
+    #print("Intervalo", amostrasgsr.size)
+    
+    lda_delta     = pickle.load(open('dadosEEG//lda_eeg_delta.sav', 'rb'))
+    lda_highAlpha = pickle.load(open('dadosEEG//lda_eeg_highAlpha.sav', 'rb'))
+    lda_highBeta  = pickle.load(open('dadosEEG//lda_eeg_highBeta.sav', 'rb'))
+    lda_lowAlpha  = pickle.load(open('dadosEEG//lda_eeg_lowAlpha.sav', 'rb'))
+    lda_lowBeta   = pickle.load(open('dadosEEG//lda_eeg_lowBeta.sav', 'rb'))
+    lda_lowGamma  = pickle.load(open('dadosEEG//lda_eeg_lowGamma.sav', 'rb'))
+    lda_midGamma  = pickle.load(open('dadosEEG//lda_eeg_midGamma.sav', 'rb'))
+    lda_theta     = pickle.load(open('dadosEEG//lda_eeg_theta.sav', 'rb'))
+        
+        # Classificador 
+    classificador_svm_eeg = pickle.load(open('dadosEEG//svm_eeg_sinais.sav', 'rb'))
+        
+    a = lda_delta.transform(sinaldelta)
+    b = lda_highAlpha.transform(sinalhighAlpha)
+    c = lda_highBeta.transform(sinalhighBeta)
+    d = lda_lowAlpha.transform(sinallowAlpha)
+    e = lda_lowBeta.transform(sinallowBeta)
+    f = lda_lowGamma.transform(sinallowGamma)
+    g = lda_midGamma.transform(sinalmidGamma)
+    h = lda_theta.transform(sinaltheta)
+
+    dfc = a
+    dfc = [np.append(dfc, b)]
+    dfc = [np.append(dfc, c)]
+    dfc = [np.append(dfc, d)]
+    dfc = [np.append(dfc, e)]
+    dfc = [np.append(dfc, f)]
+    dfc = [np.append(dfc, g)]
+    dfc = [np.append(dfc, h)]
+    dfc = np.asarray(dfc)
+    
+      
+    EEG = classificador_svm_eeg.predict(dfc)
+    '''
+    classeEEG = ClassificadorEEG(sinaldelta, 
+                                 sinalhighAlpha, sinalhighBeta,
+                                 sinallowAlpha,  sinallowBeta,
+                                 sinallowGamma,  sinalmidGamma,
+                                 sinaltheta)
+    EEG = classeEEG.classificador_eeg()
+     '''
+    print("Resultado EEG###:", EEG)
+    
+    i= i+500
+    aa = aa+500
+
+
+
+
+
+
+
+
+
 # Leitura das amostras
+    '''
 delta = read_excel("dadosEEG//amostras_delta.xlsx", sheet_name = "Sheet1")
 delta = delta.values
 
@@ -133,7 +217,7 @@ midGamma = midGamma.values
 
 theta = read_excel("dadosEEG//amostras_theta.xlsx", sheet_name = "Sheet1")
 theta = theta.values
-
+'''
 # Teste
 print("\nTESTE EEG INICIADO\n")
 for i in range(0, 4):
@@ -151,7 +235,9 @@ for i in range(0, 4):
                                  sinallowAlpha,  sinallowBeta,
                                  sinallowGamma,  sinalmidGamma,
                                  sinaltheta)
+    
     EEG = classeEEG.classificador_eeg()
     print("i:", i)
     print("Resultado EEG:", EEG)
+    
 print("\nTESTE EEG FINALIZADO\n")
