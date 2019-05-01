@@ -36,13 +36,11 @@ tamanhoamostra = dfgsr.size
 a = 3000
 i = 0
 while a <= tamanhoamostra :
-       
-    
+           
     amostrasgsr = dfgsr.iloc[: , i:a].values  
     #print("i --", i)
     #print("a --", a)
     #print("Intervalo", amostrasgsr.size)
-        
     classeGSR = ClassificadorGSR(amostrasgsr)
     GSR = classeGSR.classificador_gsr()
     
@@ -67,6 +65,32 @@ print("\nTESTE GSR FINALIZADO\n")
 #  ----------------------------------
 # |               ECG               |
 #  ---------------------------------
+dfecg = df.iloc[14:15, 1:]
+
+tamanhoamostra = dfecg.size
+a = 1020
+i = 0
+while a <= tamanhoamostra :
+           
+    amostrasecg = dfecg.iloc[: , i:a].values  
+    #print("i --", i)
+    #print("a --", a)
+    #print("Intervalo", amostrasgsr.size)
+    classeGSR = ClassificadorECG(amostrasecg)
+    ECG = classeGSR.classificador_ecg()
+    
+    print("Resultado ECG###:", ECG)
+    
+    i= i+50
+    a = a+50
+
+
+
+
+
+
+
+'''
 # Leitura das amostras
 df = read_excel("dadosECG//amostras_ECG.xlsx", sheet_name = "Planilha1")
 x  = df.values
@@ -80,7 +104,7 @@ for i in range(0, 4):
     print("i:", i)
     print("Resultado ECG:", ECG)
 print("\nTESTE ECG FINALIZADO\n")
-
+'''
  
 #  ----------------------------------
 # |               EEG               |
