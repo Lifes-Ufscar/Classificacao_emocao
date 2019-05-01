@@ -28,13 +28,14 @@ import pickle
 # |               GSR               |
 #  ---------------------------------
 # Leitura das amostras
-df = read_excel('amostras//amostra_Bareta_sid2_f13.xlsx', sheet_name = 'Sheet1')
-df = df.values
+df = read_excel('amostras//amostra_Bareta_sid1.xlsx', sheet_name = 'Sheet1')
+
 dfgsr = df.iloc[13:14, 1:]
 
 tamanhoamostra = dfgsr.size
 a = 3000
 i = 0
+print("\nTESTE GSR INICIADO\n")
 while a <= tamanhoamostra :
            
     amostrasgsr = dfgsr.iloc[: , i:a].values  
@@ -48,9 +49,10 @@ while a <= tamanhoamostra :
         
     print("Resultado GSR###:", GSR)
     
-    i= i+50
-    a = a+50
+    i= i+500
+    a = a+500
 
+print("\nTESTE GSR FINALIZADO\n")
     
 # Teste
     '''
@@ -72,6 +74,7 @@ dfecg = df.iloc[14:15, 1:]
 tamanhoamostra = dfecg.size
 a = 1020
 i = 0
+print("\nTESTE ECG INICIADO\n")
 while a <= tamanhoamostra :
            
     amostrasecg = dfecg.iloc[: , i:a].values  
@@ -83,9 +86,10 @@ while a <= tamanhoamostra :
     
     print("Resultado ECG###:", ECG)
     
-    i= i+50
-    a = a+50
-
+    i= i+500
+    a = a+500
+    
+print("\nTESTE ECG FINALIZADO\n")
 '''
 # Leitura das amostras
 df = read_excel("dadosECG//amostras_ECG.xlsx", sheet_name = "Planilha1")
@@ -119,9 +123,10 @@ sinallowGamma = dfeeg.iloc[9:10, 1:]
 sinalmidGamma = dfeeg.iloc[10:11, 1:]
 '''
 tamanhoamostra = sinaldelta.size
-tamanhoamostra = 3000
+
 aa = 3000
 i = 0
+print("\nTESTE EEG INICIADO\n")
 while aa <= tamanhoamostra :
            
     #amostraseeg = dfeeg.iloc[: , i:a].values 
@@ -184,7 +189,7 @@ while aa <= tamanhoamostra :
     i= i+500
     aa = aa+500
 
-
+print("\nTESTE EEG FINALIZADO\n")
 
 
 
@@ -217,7 +222,7 @@ midGamma = midGamma.values
 
 theta = read_excel("dadosEEG//amostras_theta.xlsx", sheet_name = "Sheet1")
 theta = theta.values
-'''
+
 # Teste
 print("\nTESTE EEG INICIADO\n")
 for i in range(0, 4):
@@ -241,3 +246,5 @@ for i in range(0, 4):
     print("Resultado EEG:", EEG)
     
 print("\nTESTE EEG FINALIZADO\n")
+'''
+
