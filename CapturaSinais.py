@@ -1,10 +1,9 @@
 
-from NeuroPy  import NeuroPy
+from NeuroPy import NeuroPy
 from Planilha import Amostra
 import serial
 import time
 import datetime
-
 
 class CapturaSinais():
 
@@ -12,30 +11,36 @@ class CapturaSinais():
         # Porta COM do MindWave USB Adapter
         self.mindWave = NeuroPy("COM13")
         self.mindWave.start()
+        #print("\n" + "\33[42m" + "- NeuroPY inicializado")
         print("\n- NeuroPY inicializado")
+        time.sleep(1)
 
         # Porta COM do Arduino
-        self.arduino = serial.Serial("COM15", "9600")  # Abre porta serial
+        # Abre porta serial
+        self.arduino = serial.Serial("COM15", "9600")
+        #print("- Porta serial aberta" + "\33[0m")
         print("- Porta serial aberta")
+        time.sleep(1)
 
-    def captura_sensores(self, usuario, sessao_id):
+    def captura_sensores(self, usuario, sessao_id, filme_id):
         ecg = " "
         gsr = " "
-        contador = 0
-        coluna   = 1
+        contador = 1
+        coluna = 1
 
-        planilha = Amostra(usuario, sessao_id)
+        #planilha = Amostra(usuario, sessao_id)
+        planilha = Amostra(usuario, sessao_id, filme_id)
 
         # Setagem de intervalo de captura
-        delay   = 10 * 1  # 1 loop de 10 segundos
+        #t = input("Tempo do video [em s]: ")
+        delay = 100 * 1  # 1 loop de 10 segundos
         duracao = time.time() + delay
 
-        print("Captura vai comecar\n")
+        print("Captura do usuario " + usuario.upper() + " vai comecar em 1 segundo\n")
         time.sleep(1)
         while (time.time() < duracao):
             tempo = datetime.datetime.now().strftime("%H:%M:%S.%f")
             serial = self.arduino.readline()  # Leitura de dois sensores: GSR e ECG
-            contador += 1
 
             # Separar os dados dos dois sensores (GSR e ECG)
             if "GSR" in serial:
@@ -46,9 +51,6 @@ class CapturaSinais():
                 ecg = aux.replace("ECG", "")
 
             print(contador,
-                  tempo,
-                  usuario,
-                  sessao_id,
                   self.mindWave.attention,
                   self.mindWave.meditation,
                   self.mindWave.rawValue,
@@ -63,9 +65,13 @@ class CapturaSinais():
                   self.mindWave.poorSignal,
                   self.mindWave.blinkStrength,
                   gsr,
-                  ecg)
-            planilha.escrita_xlsx(coluna, tempo, contador, self.mindWave, gsr, ecg)
+                  ecg,
+                  tempo)
+
+            planilha.escrita_xlsx(coluna, contador, self.mindWave, gsr, ecg, tempo)
+
             coluna += 1
+            contador += 1
 
         planilha.fecha_xlsx()
         return contador
