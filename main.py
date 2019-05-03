@@ -3,7 +3,6 @@ from BaseHTTPServer import HTTPServer
 from optparse       import OptionParser
 from RequestHandler import RequestHandler
 
-
 def main():
     port = 8080
     print("\nListening on localhost:%s" % port)
