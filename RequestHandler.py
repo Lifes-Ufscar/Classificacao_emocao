@@ -22,9 +22,9 @@ class RequestHandler(BaseHTTPRequestHandler):
 
         request_headers = self.headers
 
-        usuario   = request_headers.getheaders('usuario')
+        usuario = request_headers.getheaders('usuario')
         sessao_id = request_headers.getheaders('sessao_id')
-        filme = request_headers.getheaders('filme')
+        filme = request_headers.getheaders('filme_id')
 
         usuario = str(usuario)
         usuario = usuario.replace("['", "")
@@ -34,15 +34,14 @@ class RequestHandler(BaseHTTPRequestHandler):
         sessao_id = sessao_id.replace("['", "")
         sessao_id = sessao_id.replace("']", "")
 
-        #filme = str(filme)
-        #filme = filme.replace("['", "")
-        #filme = filme.replace("']", "")
+        filme_id = str(filme)
+        filme_id = filme_id.replace("['", "")
+        filme_id = filme_id.replace("']", "")
 
         # Chama a funcao de captura de sinais
-        # Parametros: Porta COM do MindWave, Porta COM do Arduino, Velocidade bits/s do Arduino
         captura = CapturaSinais()
-        #iteracoes = captura.captura_sensores(usuario, sessao_id, filme)
-        iteracoes = captura.captura_sensores(usuario, sessao_id)
+        iteracoes = captura.captura_sensores(usuario, sessao_id, filme_id)
+        #iteracoes = captura.captura_sensores(usuario, sessao_id)
 
         # length = int(content_length[0]) if content_length else 0
 
