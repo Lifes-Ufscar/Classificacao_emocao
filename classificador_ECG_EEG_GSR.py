@@ -7,7 +7,8 @@ from classificadorGSR import ClassificadorGSR  # LDA e Classificador GSR
 from classificadorECG import ClassificadorECG  # LDA e Classificador ECG
 from classificadorEEG import ClassificadorEEG  # LDA e Classificador EEG
 import pickle
-
+from scipy import signal
+from matplotlib import pyplot as plt
 
 #  ----------------------------------
 # |               ECG EEG GSR               |
@@ -15,9 +16,29 @@ import pickle
 # Leitura das amostras
 df = read_excel('amostras//amostra_Bareta_sid2_f3.xlsx', sheet_name = 'Sheet1')
 
-dfgsr = df.iloc[13:14, 1:]
+dfgsr = df.iloc[13:14, 2:202].values 
 dfecg = df.iloc[14:15, 2:]
 dfeeg = df.iloc[0:13, 1:] 
+
+#####Filtros 
+dfgsr = dfgsr.reshape(200,1)
+
+x = signal.wiener(dfgsr)
+y = signal.medfilt(dfgsr)
+
+plt.figure(figsize=(10, 6))
+plt.plot(dfgsr, label='Original signal')
+plt.plot(y, label='medfilt: median filter')
+plt.plot(x, label='wiener: wiener filter')
+
+plt.legend(loc='best')
+plt.show()
+
+
+
+
+
+
 
 tamanhoamostragsr = dfgsr.size
 a = 3000
