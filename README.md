@@ -21,12 +21,19 @@ A descrição de cada um desses sinais está logo abaixo:
 * [SparkFun AD8232 Single Lead Heart Rate Monitor](https://github.com/sparkfun/AD8232_Heart_Rate_Monitor)
   * Guia: https://learn.sparkfun.com/tutorials/ad8232-heart-rate-monitor-hookup-guide
 
+**Quanto mais próximos os eletrodos estiverem do coração, melhor será a medição**. Os cabos são identificados por cores para ajudar a identificar o posicionamento adequado, conforme mostrado na tabela com base no triângulo de Einthoven. Os sensores podem ser colocados nos antebraços e na perna, ou elas podem ser colocadas no peito perto dos braços e acima do abdome inferior direito (ou seja, logo acima do quadril direito), como mostrado no diagrama abaixo.
+
+<p align="center">
+  <img href="https://lifes.dc.ufscar.br/" src="imagens/sparkfun.png" alt="Retirado em: https://learn.sparkfun.com/tutorials/ad8232-heart-rate-monitor-hookup-guide" height="80%" width="80%"/>
+  <br>
+  <span>Fonte: https://learn.sparkfun.com/tutorials/ad8232-heart-rate-monitor-hookup-guide</span>
+
 ## Ambientes usados
 ### Leitura dos sinais
 * [PyCharm Community](https://www.jetbrains.com/pycharm/)
 
 ### Classificação das amostras
-* [Spyder](https://www.spyder-ide.org/) (Baixado através do ambiente Anaconda)
+* [Spyder](https://www.spyder-ide.org/) (Obtido através do ambiente Anaconda)
 * [Anaconda](https://www.anaconda.com/)
 
 ## Pendências
