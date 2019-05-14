@@ -21,6 +21,7 @@ dfecg = df.iloc[14:15, 2:]
 dfeeg = df.iloc[0:13, 1:] 
 
 #####Filtros 
+'''
 dfgsr = dfgsr.reshape(200,1)
 
 x = signal.wiener(dfgsr)
@@ -34,7 +35,7 @@ plt.plot(x, label='wiener: wiener filter')
 plt.legend(loc='best')
 plt.show()
 
-
+'''
 
 
 

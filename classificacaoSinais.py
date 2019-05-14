@@ -28,7 +28,7 @@ import pickle
 # |               GSR               |
 #  ---------------------------------
 # Leitura das amostras
-df = read_excel('amostras//amostra_Bareta_sid1.xlsx', sheet_name = 'Sheet1')
+df = read_excel('amostras//amostra_Roberta_sid1_f16.xlsx', sheet_name = 'Sheet1')
 
 dfgsr = df.iloc[13:14, 1:]
 
@@ -55,7 +55,7 @@ while a <= tamanhoamostra :
 print("\nTESTE GSR FINALIZADO\n")
     
 # Teste
-    '''
+'''
 print("\nTESTE GSR INICIADO\n")
 for i in range(0, 4):
     teste = [x[i]]
@@ -69,7 +69,7 @@ print("\nTESTE GSR FINALIZADO\n")
 #  ----------------------------------
 # |               ECG               |
 #  ---------------------------------
-dfecg = df.iloc[14:15, 1:]
+dfecg = df.iloc[14:15, 2:]
 
 tamanhoamostra = dfecg.size
 a = 1020
@@ -198,7 +198,7 @@ print("\nTESTE EEG FINALIZADO\n")
 
 
 # Leitura das amostras
-    '''
+'''
 delta = read_excel("dadosEEG//amostras_delta.xlsx", sheet_name = "Sheet1")
 delta = delta.values
 
