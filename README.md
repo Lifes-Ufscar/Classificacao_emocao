@@ -11,15 +11,16 @@ A descrição de cada um desses sinais está logo abaixo:
 * **ECG (eletrocardiograma)** mede a atividade elétrica do coração;
 * **GSR (resposta galvânica da pele)** mede a atividade elétrica das glândulas que produzem suor nas palmas das mãos e pontas dos dedos, mais sensíveis às emoções e pensamentos.
 
-| Sinal         | Hardware                                                                                                |
-| ------------- |:-------------------------------------------------------------------------------------------------------:|
-| EEG           | NeuroSky&copy; mindwave																				  |
-| ECG           | [SparkFun AD8232 Single Lead Heart Rate Monitor](https://github.com/sparkfun/AD8232_Heart_Rate_Monitor) |
-| GSR           |                                                                                                         |
+| Sinal         | Hardware                                                                                  |
+| ------------- |:-----------------------------------------------------------------------------------------:|
+| EEG           | NeuroSky&copy; mindwave																	|
+| ECG           | [SparkFun AD8232 Single Lead Heart Rate Monitor](https://www.sparkfun.com/products/12650) |
+| GSR           |                                                                                           |
 
 ## Hardwares usados
-* [SparkFun AD8232 Single Lead Heart Rate Monitor](https://github.com/sparkfun/AD8232_Heart_Rate_Monitor)
+* **SparkFun AD8232 Single Lead Heart Rate Monitor**
   * Guia: https://learn.sparkfun.com/tutorials/ad8232-heart-rate-monitor-hookup-guide
+  * GitHub: https://github.com/sparkfun/AD8232_Heart_Rate_Monitor
 
 **Quanto mais próximos os eletrodos estiverem do coração, melhor será a medição**. Os cabos são identificados por cores para ajudar a identificar o posicionamento adequado, conforme mostrado na tabela com base no triângulo de Einthoven. Os sensores podem ser colocados nos antebraços e na perna, ou elas podem ser colocadas no peito perto dos braços e acima do abdome inferior direito (ou seja, logo acima do quadril direito), como mostrado no diagrama abaixo.
 
@@ -28,9 +29,9 @@ A descrição de cada um desses sinais está logo abaixo:
   <br>
   <span>Fonte: https://learn.sparkfun.com/tutorials/ad8232-heart-rate-monitor-hookup-guide</span>
 
-* NeuroSky&copy; mindwave
+* **NeuroSky&copy; mindwave**
 	* Guia: http://download.neurosky.com/support_page_files/MindWave/docs/mindwave_user_guide.pdf
-	* Sobre poorSignal > 0: http://support.neurosky.com/kb/development-2/poorsignal-greater-than-0 
+	* Sobre poorSignal > 0: http://support.neurosky.com/kb/development-2/poorsignal-greater-than-0
 
 ## Softwares usados
 ### Leitura dos sinais
