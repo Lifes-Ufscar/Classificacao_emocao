@@ -32,9 +32,9 @@ A descrição de cada um desses sinais está logo abaixo:
 	* Guia: http://download.neurosky.com/support_page_files/MindWave/docs/mindwave_user_guide.pdf
 	* Sobre poorSignal > 0: http://support.neurosky.com/kb/development-2/poorsignal-greater-than-0 
 
-## Ambientes usados
+## Softwares usados
 ### Leitura dos sinais
-* [PyCharm Community](https://www.jetbrains.com/pycharm/)
+* Python 2.7 (IDLE e Editor de texto)
 
 ### Classificação das amostras
 * [Spyder](https://www.spyder-ide.org/) (Obtido através do ambiente Anaconda)
