@@ -34,10 +34,13 @@ A descrição de cada um desses sinais está logo abaixo:
 	* Sobre poorSignal > 0: http://support.neurosky.com/kb/development-2/poorsignal-greater-than-0
 
 ## Softwares usados
+Os programas usados para este experimento foram instalados no sistema operacional Windows 7 64-bits. **Não foi feito a portabilidade para UNIX, macOS e BSD.**
+
 ### Leitura dos sinais
-* Python 2.7 (IDLE e Editor de texto)
+* Python 2 (IDLE e Editor de texto)
 
 ### Classificação das amostras
+* Python 3
 * [Spyder](https://www.spyder-ide.org/) (Obtido através do ambiente Anaconda)
 * [Anaconda](https://www.anaconda.com/)
 
@@ -47,10 +50,8 @@ A descrição de cada um desses sinais está logo abaixo:
 - [ ] Documentar códigos
 - [x] Tentar modularizar mais os códigos
 - [x] Testar escrita em planilha com captura em tempo real
-
-## Se possível
-- [ ] Portar para o Python 3
-- [ ] Criar uma GUI básica para quem for usar posteriormente\
+- [ ] Portar código de leitura para Python 3
+- [ ] Criar uma GUI básica para quem for usar posteriormente\ 
 (De preferêcia Tkinter por já vim com o Python)
 
 <!---
