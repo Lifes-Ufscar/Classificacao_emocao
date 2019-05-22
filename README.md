@@ -28,7 +28,7 @@ A descrição de cada um desses sinais está logo abaixo:
   <br>
   <span>Fonte: https://learn.sparkfun.com/tutorials/ad8232-heart-rate-monitor-hookup-guide</span>
 
-* NeuroSky& mindwave
+* NeuroSky&copy; mindwave
 	* Guia: http://download.neurosky.com/support_page_files/MindWave/docs/mindwave_user_guide.pdf
 	* Sobre poorSignal > 0: http://support.neurosky.com/kb/development-2/poorsignal-greater-than-0 
 
