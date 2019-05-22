@@ -48,6 +48,11 @@ A descrição de cada um desses sinais está logo abaixo:
 - [x] Tentar modularizar mais os códigos
 - [x] Testar escrita em planilha com captura em tempo real
 
+## Se possível
+- [ ] Portar para o Python 3
+- [ ] Criar uma GUI básica para quem for usar posteriormente\
+(De preferêcia Tkinter por já vim com o Python)
+
 <!---
 * Leitura coração 20 frequencias por segundo;
 --->
