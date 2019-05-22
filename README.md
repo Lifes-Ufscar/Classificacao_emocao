@@ -13,7 +13,7 @@ A descrição de cada um desses sinais está logo abaixo:
 
 | Sinal         | Hardware                                                                                                |
 | ------------- |:-------------------------------------------------------------------------------------------------------:|
-| EEG           | NeuroSky&copy; mindwave                                                                                 |
+| EEG           | NeuroSky&copy; mindwave																				  |
 | ECG           | [SparkFun AD8232 Single Lead Heart Rate Monitor](https://github.com/sparkfun/AD8232_Heart_Rate_Monitor) |
 | GSR           |                                                                                                         |
 
@@ -27,6 +27,10 @@ A descrição de cada um desses sinais está logo abaixo:
   <img href="https://lifes.dc.ufscar.br/" src="imagens/sparkfun.png" alt="Retirado em: https://learn.sparkfun.com/tutorials/ad8232-heart-rate-monitor-hookup-guide" height="80%" width="80%"/>
   <br>
   <span>Fonte: https://learn.sparkfun.com/tutorials/ad8232-heart-rate-monitor-hookup-guide</span>
+
+* NeuroSky& mindwave
+	* Guia: http://download.neurosky.com/support_page_files/MindWave/docs/mindwave_user_guide.pdf
+	* Sobre poorSignal > 0: http://support.neurosky.com/kb/development-2/poorsignal-greater-than-0 
 
 ## Ambientes usados
 ### Leitura dos sinais
