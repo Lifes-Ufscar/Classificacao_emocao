@@ -23,8 +23,10 @@ dfeeg = df.iloc[0:13, 1:]
 #####Filtros 
 dfgsr = dfgsr.reshape(200,1)
 
+'''
 x = signal.wiener(dfgsr)
 y = signal.medfilt(dfgsr)
+
 
 plt.figure(figsize=(10, 6))
 plt.plot(dfgsr, label='Original signal')
@@ -34,11 +36,7 @@ plt.plot(x, label='wiener: wiener filter')
 plt.legend(loc='best')
 plt.show()
 
-
-
-
-
-
+'''
 
 tamanhoamostragsr = dfgsr.size
 a = 3000
