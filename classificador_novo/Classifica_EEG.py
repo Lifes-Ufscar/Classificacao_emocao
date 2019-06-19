@@ -7,32 +7,32 @@ import pickle
 
 
 
-dfeeg = pd.read_excel('Amostras//amostra_ID2_VD1_UI3.xlsx', sheet_name = 'Sheet1')
+dfeeg = pd.read_excel('Amostras//amostra_ID1_VD1_UI3.xlsx', sheet_name = 'Sheet1')
 
 #####Delta
-lda_delta = pickle.load(open('dados_classifica//lda_delta.sav', 'rb'))
+lda_deltaa = pickle.load(open('dados_classifica//lda_deltaa.sav', 'rb'))
 delta_classificador = pickle.load(open('dados_classifica//delta_classificador.sav', 'rb'))
 #####Final Delta
 
 #####highAlpha
-lda_highAlpha = pickle.load(open('dados_classifica//lda_highAlpha.sav', 'rb'))
+lda_highAlphaa = pickle.load(open('dados_classifica//lda_highAlphaa.sav', 'rb'))
 highAlpha_classificador = pickle.load(open('dados_classifica//highAlpha_classificador.sav', 'rb'))
 #####Final highAlpha
 
 ########highBeta
-lda_highBeta = pickle.load(open('dados_classifica//lda_highBeta.sav', 'rb'))
+lda_highBetaa = pickle.load(open('dados_classifica//lda_highBetaa.sav', 'rb'))
 highBeta_classificador = pickle.load(open('dados_classifica//highBeta_classificador.sav', 'rb'))
 
 #######Fim highBeta
 
 ###########lda_lowAlpha
-lda_lowAlpha = pickle.load(open('dados_classifica//lda_lowAlpha.sav', 'rb'))
+lda_lowAlphaa = pickle.load(open('dados_classifica//lda_lowAlphaa.sav', 'rb'))
 lowAlpha_classificador = pickle.load(open('dados_classifica//lowAlpha_classificador.sav', 'rb'))
 
 ##########lda_lowAlpha fim
 
 #################lowBeta
-lda_lowBeta = pickle.load(open('dados_classifica//lda_lowBeta.sav', 'rb'))
+lda_lowBetaa = pickle.load(open('dados_classifica//lda_lowBetaa.sav', 'rb'))
 lowBeta_classificador = pickle.load(open('dados_classifica//lowBeta_classificador.sav', 'rb'))
 #################lowBeta fim
 '''
@@ -56,7 +56,7 @@ tamanhoamostra = sinaldeltat.size
 
 dfeeg = dfeeg.iloc[:, 2:]
 
-aa = 3000
+aa = 800
 i = 0
 print("\nTESTE EEG INICIADO\n")
 while aa <= tamanhoamostra:
@@ -66,7 +66,7 @@ while aa <= tamanhoamostra:
     sinaldelta = sinaldelta.values
     sinaldelta = sinaldelta.astype(float)
     
-    delta = lda_delta.transform(sinaldelta)
+    delta = lda_deltaa.transform(sinaldelta)
     
     previsoesdelta = delta_classificador.predict(delta)
     #Final delta
@@ -76,7 +76,7 @@ while aa <= tamanhoamostra:
     sinalhighAlpha = sinalhighAlpha.values
     sinalhighAlpha = sinalhighAlpha.astype(float)
     
-    highAlpha = lda_highAlpha.transform(sinalhighAlpha)
+    highAlpha = lda_highAlphaa.transform(sinalhighAlpha)
     previsoeshighAlpha = highAlpha_classificador.predict(highAlpha)
     
     #highBeta
@@ -85,7 +85,7 @@ while aa <= tamanhoamostra:
     sinalhighBeta = sinalhighBeta.values
     sinalhighBeta = sinalhighBeta.astype(float)
     
-    highBeta = lda_highBeta.transform(sinalhighBeta)
+    highBeta = lda_highBetaa.transform(sinalhighBeta)
     previsoeshighBeta = highBeta_classificador.predict(highBeta)
     #highBeta fim
     
@@ -95,7 +95,7 @@ while aa <= tamanhoamostra:
     sinallowAlpha = sinallowAlpha.values
     sinallowAlpha = sinallowAlpha.astype(float)
     
-    lowAlpha = lda_lowAlpha.transform(sinallowAlpha)
+    lowAlpha = lda_lowAlphaa.transform(sinallowAlpha)
     previsoeslowAlpha = lowAlpha_classificador.predict(lowAlpha)
     
     #lowAlpha fim
@@ -106,7 +106,7 @@ while aa <= tamanhoamostra:
     sinallowBeta = sinallowBeta.values
     sinallowBeta = sinallowBeta.astype(float)
     
-    lowBeta = lda_lowBeta.transform(sinallowBeta)
+    lowBeta = lda_lowBetaa.transform(sinallowBeta)
     previsoeslowBeta = lowBeta_classificador.predict(lowBeta)
     
     #lowBeta fim
@@ -119,8 +119,8 @@ while aa <= tamanhoamostra:
     
     print("delta", previsoesdelta ,"highAlpha", previsoeshighAlpha, "highBeta", previsoeshighBeta, "lowAlpha", previsoeslowAlpha,"lowBeta", previsoeslowBeta)
     
-    i= i+500
-    aa = aa+500
+    i= i+50
+    aa = aa+50
     total = 0
     
 print("\nTESTE EEG FIM\n")
